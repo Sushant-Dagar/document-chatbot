@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  streamlit:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./chroma_db:/app/chroma_db
+    env_file:
+      - .env
+    command: streamlit run app.py --server.port=8501 --server.address=0.0.0.0
+
+  api:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./chroma_db:/app/chroma_db
+      - ./uploads:/app/uploads
+    env_file:
+      - .env
+    command: python api.py
