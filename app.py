@@ -27,7 +27,7 @@ chroma_client = chromadb.PersistentClient(path="./chroma_db")
 # Google Gemini embedding function
 google_ef = embedding_functions.GoogleGenerativeAiEmbeddingFunction(
     api_key=GOOGLE_API_KEY,
-    model_name="models/gemini-embedding-001""
+    model_name="models/gemini-embedding-001"
 ) if GOOGLE_API_KEY else None
 
 
