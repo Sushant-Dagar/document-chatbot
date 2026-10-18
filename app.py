@@ -27,7 +27,7 @@ chroma_client = chromadb.PersistentClient(path="./chroma_db")
 # Google Gemini embedding function
 google_ef = embedding_functions.GoogleGenerativeAiEmbeddingFunction(
     api_key=GOOGLE_API_KEY,
-    model_name="models/embedding-001"
+    model_name="models/gemini-embedding-001""
 ) if GOOGLE_API_KEY else None
 
 
@@ -105,7 +105,7 @@ def query_documents(collection, query: str, n_results: int = 3) -> list:
 
 def generate_response(query: str, context: str) -> str:
     """Generate a response using Gemini API based on the query and context."""
-    model = genai.GenerativeModel('gemini-pro')
+    model = genai.GenerativeModel('gemini-flash-latest')
 
     prompt = f"""You are a helpful assistant that answers questions based on the provided document context.
 
